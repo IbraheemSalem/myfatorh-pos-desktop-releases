@@ -1,0 +1,13 @@
+{
+  "app": "MyFatorh POS Desktop",
+  "version": "0.2.9",
+  "platform": "windows-x64",
+  "min_os": "Windows 10 64-bit",
+  "file_name": "MyFatorhPos-0.2.9-x64.msi",
+  "size_bytes": 53215232,
+  "sha256": "b33e44bba7e8689b3b94211dbc31e4146924ac96fa970054d99a8eaec99103bd",
+  "download_url": "https://github.com/IbraheemSalem/myfatorh-pos-desktop-releases/releases/download/v0.2.9/MyFatorhPos-0.2.9-x64.msi",
+  "release_page": "https://github.com/IbraheemSalem/myfatorh-pos-desktop-releases/releases/tag/v0.2.9",
+  "silent_install": "msiexec /i MyFatorhPos-0.2.9-x64.msi /qn",
+  "released_at": "2026-11-19"
+}

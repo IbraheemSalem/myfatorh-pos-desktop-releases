@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-lang="ar">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MyFatorh POS Desktop Installation</title>
+<style>
+  :root {
+    --brand: #2C0E62; --brand-soft: #EEEAF5; --accent: #8B5CF6;
+    --bg: #F7F7F7; --surface: #FFFFFF; --text: #222222; --muted: #6B6B6B;
+    --border: #E5E5E5; --code: #F3F1F8;
+    --ok: #047857; --ok-soft: #ECFDF5; --warn: #92400E; --warn-soft: #FFFBEB; --bad: #B91C1C; --bad-soft: #FEF2F2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --brand: #B9A3F0; --brand-soft: #2A2240; --accent: #A78BFA;
+      --bg: #141218; --surface: #1D1A24; --text: #ECEAF2; --muted: #A7A2B5;
+      --border: #332D40; --code: #26212F;
+      --ok: #6EE7B7; --ok-soft: #12291F; --warn: #FCD34D; --warn-soft: #2C2412; --bad: #FCA5A5; --bad-soft: #2E1515;
+    }
+  }
+  :root[data-theme="dark"] {
+    --brand: #B9A3F0; --brand-soft: #2A2240; --accent: #A78BFA;
+    --bg: #141218; --surface: #1D1A24; --text: #ECEAF2; --muted: #A7A2B5;
+    --border: #332D40; --code: #26212F;
+    --ok: #6EE7B7; --ok-soft: #12291F; --warn: #FCD34D; --warn-soft: #2C2412; --bad: #FCA5A5; --bad-soft: #2E1515;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.7 "Segoe UI", Tahoma, system-ui, sans-serif; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 16px; }
+  header { background: #2C0E62; color: #fff; padding: 28px 0 24px; }
+  header .row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .mark { display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 13px;
+          background: linear-gradient(135deg, #4C1D95, #6B21A8); font-weight: 800; font-size: 22px; margin-inline-end: 12px; }
+  h1 { margin: 0; font-size: 26px; line-height: 1.25; }
+  header p { margin: 4px 0 0; opacity: .82; }
+  .lang { border: 1px solid rgba(255,255,255,.45); background: transparent; color: #fff; border-radius: 999px;
+          padding: 6px 16px; font: inherit; font-weight: 600; cursor: pointer; }
+  .lang:hover, .lang:focus-visible { background: rgba(255,255,255,.12); outline: none; }
+  nav { position: sticky; top: 0; z-index: 2; background: var(--surface); border-bottom: 1px solid var(--border); }
+  nav .wrap { display: flex; gap: 6px; overflow-x: auto; padding-block: 8px; }
+  nav a { flex: none; text-decoration: none; color: var(--text); font-size: 13px; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--border); }
+  nav a:hover { border-color: var(--brand); color: var(--brand); }
+  main { padding: 24px 0 48px; display: grid; gap: 18px; }
+  section { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px 22px; scroll-margin-top: 60px; }
+  h2 { margin: 0 0 10px; font-size: 19px; color: var(--brand); display: flex; align-items: center; gap: 10px; }
+  .num { display: inline-flex; align-items: center; justify-content: center; min-width: 28px; height: 28px; border-radius: 9px;
+         background: var(--brand-soft); color: var(--brand); font-size: 14px; font-weight: 800; }
+  h3 { margin: 16px 0 6px; font-size: 15px; }
+  p { margin: 6px 0; }
+  ol, ul { margin: 6px 0; padding-inline-start: 22px; }
+  li { margin: 4px 0; }
+  code, kbd { font-family: Consolas, "Cascadia Mono", monospace; font-size: 13px; background: var(--code); padding: 1px 6px; border-radius: 5px; direction: ltr; unicode-bidi: isolate; }
+  pre { background: var(--code); border-radius: 10px; padding: 12px 14px; overflow-x: auto; direction: ltr; text-align: left; margin: 8px 0; }
+  pre code { background: none; padding: 0; }
+  li code { word-break: break-all; }
+  main a { color: var(--accent); font-weight: 600; }
+  .ltr { direction: ltr; unicode-bidi: isolate; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 14px; }
+  th, td { text-align: start; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 13px; }
+  .tbl { overflow-x: auto; }
+  .note { border-radius: 10px; padding: 10px 14px; margin: 10px 0; border-inline-start: 4px solid; }
+  .note.warn { background: var(--warn-soft); border-color: var(--warn); }
+  .note.bad { background: var(--bad-soft); border-color: var(--bad); }
+  .note.ok { background: var(--ok-soft); border-color: var(--ok); }
+  .note .nt { font-weight: 700; margin-bottom: 2px; }
+  footer { color: var(--muted); font-size: 13px; text-align: center; padding: 0 0 32px; }
+  [data-l] { display: none !important; }
+  html[data-lang="ar"] [data-l="ar"], html[data-lang="en"] [data-l="en"] { display: revert !important; }
+  @media print { nav, .lang { display: none; } section { break-inside: avoid; border: none; } body { background: #fff; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap row">
+    <div style="display:flex;align-items:center">
+      <span class="mark">W</span>
+      <div>
+        <h1><span data-l="ar">تثبيت MyFatorh POS على جهاز Windows</span><span data-l="en">Installing MyFatorh POS on a Windows PC</span></h1>
+        <p><span data-l="ar">الإصدار 0.2.9 · Windows 10 و 11</span><span data-l="en">Version 0.2.9 · Windows 10 and 11</span></p>
+      </div>
+    </div>
+    <button class="lang" type="button" id="langBtn" aria-label="Switch language">English</button>
+  </div>
+</header>
+
+<nav aria-label="Sections">
+  <div class="wrap">
+    <a href="#req"><span data-l="ar">المتطلبات</span><span data-l="en">Requirements</span></a>
+    <a href="#get"><span data-l="ar">الحصول على المثبّت</span><span data-l="en">Get the installer</span></a>
+    <a href="#install"><span data-l="ar">التثبيت</span><span data-l="en">Install</span></a>
+    <a href="#first"><span data-l="ar">أول تشغيل</span><span data-l="en">First run</span></a>
+    <a href="#printer"><span data-l="ar">الطابعة</span><span data-l="en">Printer</span></a>
+    <a href="#scanner"><span data-l="ar">الماسح</span><span data-l="en">Scanner</span></a>
+    <a href="#server"><span data-l="ar">عنوان الخادم</span><span data-l="en">Server address</span></a>
+    <a href="#update"><span data-l="ar">التحديث والإزالة</span><span data-l="en">Update and remove</span></a>
+    <a href="#trouble"><span data-l="ar">حل المشكلات</span><span data-l="en">Troubleshooting</span></a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <section id="req">
+    <h2><span class="num">1</span><span data-l="ar">المتطلبات</span><span data-l="en">Requirements</span></h2>
+    <ul data-l="ar">
+      <li>جهاز يعمل بنظام <b>Windows 10 أو Windows 11 بنسخة 64-بت</b>.</li>
+      <li>صلاحية <b>مسؤول (Administrator)</b> على الجهاز مرة واحدة أثناء التثبيت.</li>
+      <li>مساحة فارغة 300 ميجابايت تقريباً.</li>
+      <li><b>اتصال بالإنترنت</b>: البيع وفتح الوردية وإغلاقها تحتاج اتصالاً بالخادم.</li>
+      <li>رقم جوال وكلمة مرور لحساب MyFatorh، ونقطة بيع (جهاز POS) معرّفة للشركة على الخادم.</li>
+      <li>لا حاجة لتثبيت .NET أو أي برنامج آخر: كل ما يلزم موجود داخل المثبّت.</li>
+    </ul>
+    <ul data-l="en">
+      <li>A PC running <b>Windows 10 or Windows 11, 64-bit</b>.</li>
+      <li><b>Administrator</b> rights on the PC, once, during installation.</li>
+      <li>About 300 MB of free disk space.</li>
+      <li>An <b>internet connection</b>: selling, opening and closing a shift need the server.</li>
+      <li>A MyFatorh account (mobile number and password) and a POS device set up for the company on the server.</li>
+      <li>No need to install .NET or anything else: the installer contains everything.</li>
+    </ul>
+  </section>
+
+  <section id="get">
+    <h2><span class="num">2</span><span data-l="ar">الحصول على ملف التثبيت</span><span data-l="en">Get the installer</span></h2>
+    <p data-l="ar">ملف التثبيت اسمه <code>MyFatorhPos-0.2.9-x64.msi</code> (حوالي 50 ميجابايت). احصل عليه بإحدى الطريقتين:</p>
+    <p data-l="en">The installer is <code>MyFatorhPos-0.2.9-x64.msi</code> (about 50 MB). Get it one of two ways:</p>
+    <ol data-l="ar">
+      <li><b>رابط مباشر (الأسهل):</b> <a href="https://github.com/IbraheemSalem/myfatorh-pos-desktop-releases/releases/download/v0.2.9/MyFatorhPos-0.2.9-x64.msi">تنزيل MyFatorhPos-0.2.9-x64.msi</a><br>
+        <code>https://github.com/IbraheemSalem/myfatorh-pos-desktop-releases/releases/download/v0.2.9/MyFatorhPos-0.2.9-x64.msi</code><br>
+        الرابط عام ولا يحتاج تسجيل دخول. صفحة الإصدار: <a href="https://github.com/IbraheemSalem/myfatorh-pos-desktop-releases/releases/tag/v0.2.9">v0.2.9</a></li>
+      <li><b>نسخ مباشر:</b> انسخ الملف بذاكرة USB من الجهاز الذي بُني عليه، من المجلد <code>D:\MyFatorh System\MyFatorhPOS\desktop\artifacts\</code>.</li>
+    </ol>
+    <ol data-l="en">
+      <li><b>Direct link (easiest):</b> <a href="https://github.com/IbraheemSalem/myfatorh-pos-desktop-releases/releases/download/v0.2.9/MyFatorhPos-0.2.9-x64.msi">Download MyFatorhPos-0.2.9-x64.msi</a><br>
+        <code>https://github.com/IbraheemSalem/myfatorh-pos-desktop-releases/releases/download/v0.2.9/MyFatorhPos-0.2.9-x64.msi</code><br>
+        The link is public, no sign-in needed. Release page: <a href="https://github.com/IbraheemSalem/myfatorh-pos-desktop-releases/releases/tag/v0.2.9">v0.2.9</a></li>
+      <li><b>Direct copy:</b> copy the file on a USB stick from the PC it was built on, folder <code>D:\MyFatorh System\MyFatorhPOS\desktop\artifacts\</code>.</li>
+    </ol>
+  </section>
+
+  <section id="install">
+    <h2><span class="num">3</span><span data-l="ar">التثبيت</span><span data-l="en">Install</span></h2>
+    <ol data-l="ar">
+      <li>انقر نقراً مزدوجاً على <code>MyFatorhPos-0.2.9-x64.msi</code>.</li>
+      <li>إذا ظهرت نافذة <b>«حمى Windows جهاز الكمبيوتر»</b> (SmartScreen): اضغط <b>«مزيد من المعلومات»</b> ثم <b>«تشغيل على أي حال»</b>. تظهر لأن الملف غير موقّع رقمياً بعد.</li>
+      <li>في نافذة الترحيب اضغط <b>Next</b>. اترك مجلد التثبيت كما هو (<code>C:\Program Files\MyFatorh POS</code>) واضغط <b>Next</b>.</li>
+      <li>في صفحة <b>«خيارات التثبيت»</b> اختر: <b>«إنشاء اختصار على سطح المكتب»</b> (مفعّل افتراضياً) و<b>«التشغيل تلقائياً مع بدء Windows»</b> (غير مفعّل افتراضياً). اضغط <b>Next</b> ثم <b>Install</b>.</li>
+      <li>وافق على طلب صلاحية المسؤول (UAC) بالضغط على <b>نعم</b>.</li>
+      <li>عند الانتهاء اترك <b>«تشغيل البرنامج الآن»</b> مفعّلاً ليفتح البرنامج مباشرة، واضغط <b>Finish</b>. ستجد <b>«MyFatorh POS»</b> في قائمة ابدأ، وعلى سطح المكتب إذا اخترت الاختصار.</li>
+    </ol>
+    <ol data-l="en">
+      <li>Double-click <code>MyFatorhPos-0.2.9-x64.msi</code>.</li>
+      <li>If <b>"Windows protected your PC"</b> (SmartScreen) appears: click <b>More info</b>, then <b>Run anyway</b>. It shows because the file is not code-signed yet.</li>
+      <li>On the welcome page click <b>Next</b>. Keep the install folder (<code>C:\Program Files\MyFatorh POS</code>) and click <b>Next</b>.</li>
+      <li>On the <b>Install options</b> page choose <b>"Create a desktop shortcut"</b> (on by default) and <b>"Start with Windows"</b> (off by default). Click <b>Next</b>, then <b>Install</b>.</li>
+      <li>Accept the administrator prompt (UAC) with <b>Yes</b>.</li>
+      <li>Leave <b>"Launch now"</b> ticked to open the app right away, and click <b>Finish</b>. <b>"MyFatorh POS"</b> is in the Start menu, and on the desktop if you chose the shortcut.</li>
+    </ol>
+    <div class="note ok">
+      <div class="nt" data-l="ar">نسخة واحدة فقط</div><div class="nt" data-l="en">One copy at a time</div>
+      <span data-l="ar">يعمل البرنامج مرة واحدة فقط على الجهاز. إذا كان مفتوحاً (مثلاً بدأ مع Windows) وفتحته من الاختصار، تظهر نافذته المفتوحة بدلاً من فتح نسخة ثانية.</span>
+      <span data-l="en">The app runs once per PC session. If it is already open (for example it started with Windows) and you open it from a shortcut, the open window comes to the front instead of a second copy.</span>
+    </div>
+    <h3><span data-l="ar">تثبيت صامت (لعدة أجهزة)</span><span data-l="en">Silent install (many tills)</span></h3>
+    <p data-l="ar">من نافذة «موجّه الأوامر» بصلاحية المسؤول، في مجلد الملف:</p>
+    <p data-l="en">From an administrator Command Prompt, in the file's folder:</p>
+    <pre><code>msiexec /i MyFatorhPos-0.2.9-x64.msi /qn</code></pre>
+    <p data-l="ar">الافتراضي: اختصار على سطح المكتب، وبدون التشغيل مع Windows. لتغيير ذلك أضف <code>DESKTOP_SHORTCUT=0</code> لإلغاء الاختصار، أو <code>START_WITH_WINDOWS=1</code> ليبدأ البرنامج مع Windows:</p>
+    <p data-l="en">By default it adds a desktop shortcut and does not start with Windows. Add <code>DESKTOP_SHORTCUT=0</code> to skip the shortcut, or <code>START_WITH_WINDOWS=1</code> to start the app with Windows:</p>
+    <pre><code>msiexec /i MyFatorhPos-0.2.9-x64.msi /qn DESKTOP_SHORTCUT=0 START_WITH_WINDOWS=1</code></pre>
+  </section>
+
+  <section id="first">
+    <h2><span class="num">4</span><span data-l="ar">أول تشغيل</span><span data-l="en">First run</span></h2>
+    <ol data-l="ar">
+      <li>افتح <b>«MyFatorh POS»</b> من سطح المكتب. اللغة الافتراضية العربية، وزر <b>English</b> في شاشة الدخول يغيّرها فوراً.</li>
+      <li>أدخل <b>رقم الجوال</b> بدون <code>966</code> وبدون الصفر (مثال <code>5XXXXXXXX</code>) و<b>كلمة المرور</b>، ثم اضغط <b>دخول</b>.</li>
+      <li>تفتح صفحة <b>نقطة البيع</b>. إذا لم تكن هناك وردية مفتوحة: اختر <b>جهاز نقطة البيع</b>، راجع رصيد الافتتاح، واضغط فتح الوردية.</li>
+      <li>تظهر شاشة البيع: الأصناف على جهة والسلة على الجهة الأخرى. <kbd>F2</kbd> للبحث، <kbd>F7</kbd> لاختيار عميل، <kbd>F9</kbd> للدفع.</li>
+    </ol>
+    <ol data-l="en">
+      <li>Open <b>"MyFatorh POS"</b> from the desktop. It starts in Arabic; the <b>English</b> button on the login screen switches at once.</li>
+      <li>Enter the <b>mobile number</b> without <code>966</code> and without the leading zero (e.g. <code>5XXXXXXXX</code>) and the <b>password</b>, then sign in.</li>
+      <li>The <b>POS</b> page opens. With no open shift: pick the <b>POS device</b>, check the opening balance and open the shift.</li>
+      <li>The till appears: products on one side, cart on the other. <kbd>F2</kbd> search, <kbd>F7</kbd> pick a client, <kbd>F9</kbd> pay.</li>
+    </ol>
+    <div class="note ok">
+      <div class="nt" data-l="ar">تبقى مسجّلاً</div><div class="nt" data-l="en">You stay signed in</div>
+      <span data-l="ar">الجلسة محفوظة ومشفّرة لمستخدم Windows الحالي، فلا يُطلب الدخول عند كل تشغيل. كل مستخدم Windows على الجهاز له جلسته وإعداداته.</span>
+      <span data-l="en">The session is saved, encrypted for the current Windows user, so you are not asked to sign in at every start. Each Windows user on the PC has their own session and settings.</span>
+    </div>
+  </section>
+
+  <section id="printer">
+    <h2><span class="num">5</span><span data-l="ar">إعداد طابعة الفواتير</span><span data-l="en">Set up the receipt printer</span></h2>
+    <ol data-l="ar">
+      <li><b>ثبّت تعريف الطابعة</b> من الشركة المصنّعة أولاً (للطابعات المتصلة بـ USB)، وتأكد أنها تطبع صفحة تجريبية من Windows.</li>
+      <li>في البرنامج افتح <b>الإعدادات ← الطابعات</b>.</li>
+      <li>في <b>«طابعة الفواتير (هذا الجهاز)»</b> اختر <b>طريقة الاتصال</b>:</li>
+    </ol>
+    <ol data-l="en">
+      <li><b>Install the printer's driver</b> from its maker first (for USB printers) and check that Windows prints a test page.</li>
+      <li>In the app open <b>Settings → Printers</b>.</li>
+      <li>Under <b>"Receipt printer (this computer)"</b> choose the <b>Connection</b>:</li>
+    </ol>
+    <div class="tbl"><table>
+      <thead><tr>
+        <th><span data-l="ar">الخيار</span><span data-l="en">Option</span></th>
+        <th><span data-l="ar">متى تستخدمه</span><span data-l="en">When to use it</span></th>
+      </tr></thead>
+      <tbody>
+        <tr><td><div class="nt" data-l="ar">طابعة حرارية USB</div><div class="nt" data-l="en">USB thermal printer</div></td>
+            <td><span data-l="ar"><b>الأنسب لطابعات الفواتير الحرارية 80 مم و 58 مم</b> (مثل POS-80C). اختر الطابعة المثبتة من القائمة. يفتح درج النقد.</span><span data-l="en"><b>Best for 80 mm and 58 mm thermal receipt printers</b> (e.g. POS-80C). Pick the installed printer from the list. Opens the cash drawer.</span></td></tr>
+        <tr><td><div class="nt" data-l="ar">طابعة شبكة (IP)</div><div class="nt" data-l="en">Network printer (IP)</div></td>
+            <td><span data-l="ar">طابعة متصلة بالشبكة. أدخل عنوانها، مثال <code>192.168.1.50</code> أو <code>192.168.1.50:9100</code>. لا تحتاج تعريف Windows.</span><span data-l="en">A printer on the network. Enter its address, e.g. <code>192.168.1.50</code> or <code>192.168.1.50:9100</code>. No Windows driver needed.</span></td></tr>
+        <tr><td><div class="nt" data-l="ar">طابعة Windows</div><div class="nt" data-l="en">Windows printer</div></td>
+            <td><span data-l="ar">أي طابعة عادية مثبتة (مثل طابعة A4). تطبع عبر تعريف Windows.</span><span data-l="en">Any normal installed printer (e.g. an A4 printer). Prints through its Windows driver.</span></td></tr>
+      </tbody>
+    </table></div>
+    <ol start="4" data-l="ar">
+      <li>اختر <b>عرض الورق</b>: 80 مم أو 58 مم أو 104 مم.</li>
+      <li>فعّل <b>«فتح درج النقد عند طباعة فاتورة بيع»</b> إذا كان الدرج موصولاً بالطابعة.</li>
+      <li>اضغط <b>طباعة تجريبية</b> وتأكد أن النص العربي واضح وأن رمز QR يُقرأ بالجوال.</li>
+    </ol>
+    <ol start="4" data-l="en">
+      <li>Choose the <b>Paper width</b>: 80, 58 or 104 mm.</li>
+      <li>Turn on <b>"Open the cash drawer when a sale receipt prints"</b> if the drawer is plugged into the printer.</li>
+      <li>Press <b>Test print</b> and check the Arabic text is clear and the QR code scans with a phone.</li>
+    </ol>
+    <div class="note warn">
+      <div class="nt" data-l="ar">طابعات نقطة البيع على الخادم</div><div class="nt" data-l="en">POS printers on the server</div>
+      <span data-l="ar">إذا كانت لنقطة البيع طابعات شبكة معرّفة على الخادم، يطبع البرنامج عليها افتراضياً. لاستخدام طابعة هذا الجهاز اختر «تُطبع الفواتير على: طابعة هذا الجهاز».</span>
+      <span data-l="en">If the POS has network printers set up on the server, the app prints on them by default. To use this PC's printer, choose "Print receipts on: This computer's printer".</span>
+    </div>
+  </section>
+
+  <section id="scanner">
+    <h2><span class="num">6</span><span data-l="ar">ماسح الباركود</span><span data-l="en">Barcode scanner</span></h2>
+    <p data-l="ar">أي ماسح USB يعمل كلوحة مفاتيح (وهو النوع الشائع) يعمل مباشرة بدون إعداد. صوّب على المنتج وشاشة البيع مفتوحة: يكتب الماسح الرمز في خانة البحث ويضغط Enter، فيُضاف المنتج للسلة. إذا لم يُضف، اضغط <kbd>F2</kbd> ثم امسح مرة أخرى.</p>
+    <p data-l="en">Any USB scanner that acts as a keyboard (the common kind) works with no setup. Scan with the till open: the scanner types the code into the search box and presses Enter, and the product goes into the cart. If not, press <kbd>F2</kbd> and scan again.</p>
+  </section>
+
+  <section id="server">
+    <h2><span class="num">7</span><span data-l="ar">عنوان الخادم</span><span data-l="en">Server address</span></h2>
+    <p data-l="ar">يتصل البرنامج افتراضياً بالخادم <code>https://api.dev.wrid.sa</code>. لا تغيّره إلا بطلب من الدعم الفني. طريقتان للتغيير:</p>
+    <p data-l="en">By default the app connects to <code>https://api.dev.wrid.sa</code>. Change it only when support asks you to. Two ways:</p>
+    <ul data-l="ar">
+      <li><b>لهذا المستخدم:</b> الإعدادات ← عنوان الخادم ← حفظ. يُسجَّل خروجك بعد التغيير.</li>
+      <li><b>لكل مستخدمي الجهاز:</b> افتح المفكرة كمسؤول، وعدّل الملف <code>C:\Program Files\MyFatorh POS\appsettings.json</code>. التحديثات اللاحقة تحافظ على هذا التعديل.</li>
+    </ul>
+    <ul data-l="en">
+      <li><b>For this user:</b> Settings → Server address → Save. You are signed out after the change.</li>
+      <li><b>For every user of the PC:</b> open Notepad as administrator and edit <code>C:\Program Files\MyFatorh POS\appsettings.json</code>. Later updates keep the edit.</li>
+    </ul>
+    <pre><code>{
+  "ApiUrl": "https://api.dev.wrid.sa"
+}</code></pre>
+    <div class="note bad">
+      <div class="nt" data-l="ar">تنبيه</div><div class="nt" data-l="en">Caution</div>
+      <span data-l="ar">الخادم <code>api.dev.wrid.sa</code> يعمل على قاعدة البيانات الحقيقية. كل بيع أو وردية أو ترتيب منتجات تجريبي يُسجَّل فعلاً لدى الشركة. جرّب بحساب شركة تجريبية.</span>
+      <span data-l="en"><code>api.dev.wrid.sa</code> runs on the real database. Every test sale, shift or product order is recorded for the company. Test with a test company account.</span>
+    </div>
+  </section>
+
+  <section id="update">
+    <h2><span class="num">8</span><span data-l="ar">التحديث والإزالة</span><span data-l="en">Update and remove</span></h2>
+    <ul data-l="ar">
+      <li><b>التحديث:</b> شغّل ملف MSI للإصدار الأحدث بنفس الطريقة. يحلّ محل القديم مباشرة وتبقى الجلسة والإعدادات والطابعات كما هي، وتظهر خيارات التثبيت كما اخترتها في المرة السابقة. لا داعي لإزالة القديم أولاً.</li>
+      <li><b>الإزالة:</b> الإعدادات ← التطبيقات ← <b>«MyFatorh POS»</b> ← إلغاء التثبيت.</li>
+      <li>بيانات المستخدم (الجلسة، الإعدادات، الطابعات، البيانات المحفوظة، السجلات) في <code>%LOCALAPPDATA%\MyFatorhPos</code>، ولا تُحذف عند الإزالة. احذف المجلد يدوياً لإزالتها بالكامل.</li>
+    </ul>
+    <ul data-l="en">
+      <li><b>Update:</b> run the newer version's MSI the same way. It replaces the old one in place; the session, settings and printers are kept, and the install options show your previous choices. No need to uninstall first.</li>
+      <li><b>Remove:</b> Settings → Apps → <b>"MyFatorh POS"</b> → Uninstall.</li>
+      <li>User data (session, settings, printers, saved data, logs) is in <code>%LOCALAPPDATA%\MyFatorhPos</code> and is not deleted on uninstall. Delete that folder by hand to remove it completely.</li>
+    </ul>
+  </section>
+
+  <section id="trouble">
+    <h2><span class="num">9</span><span data-l="ar">حل المشكلات</span><span data-l="en">Troubleshooting</span></h2>
+    <div class="tbl"><table>
+      <thead><tr>
+        <th><span data-l="ar">المشكلة</span><span data-l="en">Problem</span></th>
+        <th><span data-l="ar">الحل</span><span data-l="en">What to do</span></th>
+      </tr></thead>
+      <tbody>
+        <tr><td><span data-l="ar">Windows يمنع تشغيل المثبّت</span><span data-l="en">Windows blocks the installer</span></td>
+            <td><span data-l="ar">«مزيد من المعلومات» ← «تشغيل على أي حال». إذا لم يظهر الزر: انقر الملف بالزر الأيمن ← خصائص ← فعّل «إلغاء الحظر» ← موافق.</span><span data-l="en">"More info" → "Run anyway". If there's no such button: right-click the file → Properties → tick "Unblock" → OK.</span></td></tr>
+        <tr><td><span data-l="ar">«غير متصل» في أعلى الشاشة</span><span data-l="en">"Offline" at the top of the screen</span></td>
+            <td><span data-l="ar">تحقق من الإنترنت ومن عنوان الخادم في الإعدادات. اضغط على مؤشر الاتصال لرؤية التفاصيل وزر التحديث.</span><span data-l="en">Check the internet and the server address in Settings. Click the connection chip for details and the refresh button.</span></td></tr>
+        <tr><td><span data-l="ar">لا تظهر نقاط البيع عند فتح الوردية</span><span data-l="en">No POS devices when opening a shift</span></td>
+            <td><span data-l="ar">يجب تعريف جهاز نقطة بيع للشركة على الخادم (من الويب)، ويجب أن يكون للحساب صلاحية عليه.</span><span data-l="en">A POS device must be set up for the company on the server (from the web), and the account must have access to it.</span></td></tr>
+        <tr><td><span data-l="ar">الطابعة غير موجودة</span><span data-l="en">Printer not found</span></td>
+            <td><span data-l="ar">ثبّت تعريفها، ثم في الإعدادات ← الطابعات اضغط «تحديث قائمة الطابعات» واخترها من جديد.</span><span data-l="en">Install its driver, then in Settings → Printers press "Refresh printer list" and pick it again.</span></td></tr>
+        <tr><td><span data-l="ar">الفاتورة الطويلة تنقسم أو تُقص</span><span data-l="en">A long receipt is split or cut</span></td>
+            <td><span data-l="ar">استخدم «طابعة حرارية USB» بدلاً من «طابعة Windows»؛ كثير من تعريفات 80 مم تتجاهل طول الصفحة.</span><span data-l="en">Use "USB thermal printer" instead of "Windows printer"; many 80 mm drivers ignore the page length.</span></td></tr>
+        <tr><td><span data-l="ar">الأرقام أو التاريخ بشكل غريب</span><span data-l="en">Odd digits or dates</span></td>
+            <td><span data-l="ar">البرنامج يستخدم دائماً التاريخ الميلادي والأرقام 0-9 مهما كانت إعدادات Windows الإقليمية. هذا مقصود ليطابق الفواتير والويب.</span><span data-l="en">The app always uses Gregorian dates and 0-9 digits, whatever Windows' regional settings. This is deliberate, to match invoices and the web.</span></td></tr>
+      </tbody>
+    </table></div>
+    <p data-l="ar">إذا احتجت الدعم الفني، أرسل الملف <code>%LOCALAPPDATA%\MyFatorhPos\errors.log</code> إن وُجد. للوصول إليه: اضغط <kbd>Win</kbd> + <kbd>R</kbd> واكتب <code>%LOCALAPPDATA%\MyFatorhPos</code>.</p>
+    <p data-l="en">If you contact support, send <code>%LOCALAPPDATA%\MyFatorhPos\errors.log</code> if it exists. To open the folder: press <kbd>Win</kbd> + <kbd>R</kbd> and type <code>%LOCALAPPDATA%\MyFatorhPos</code>.</p>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <span data-l="ar">MyFatorh POS · نسخة سطح المكتب 0.2.9</span>
+  <span data-l="en">MyFatorh POS · Desktop 0.2.9</span>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement, btn = document.getElementById('langBtn');
+    function apply(lang) {
+      root.setAttribute('data-lang', lang);
+      root.lang = lang;
+      root.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      btn.textContent = lang === 'ar' ? 'English' : 'العربية';
+      document.title = lang === 'ar' ? 'تثبيت MyFatorh POS' : 'MyFatorh POS Desktop Installation';
+    }
+    var saved = null;
+    try { saved = localStorage.getItem('myfatorhpos-guide-lang'); } catch (e) {}
+    apply(saved === 'en' ? 'en' : 'ar');
+    btn.addEventListener('click', function () {
+      var next = root.getAttribute('data-lang') === 'ar' ? 'en' : 'ar';
+      apply(next);
+      try { localStorage.setItem('myfatorhpos-guide-lang', next); } catch (e) {}
+    });
+  })();
+</script>
+</body>
+</html>

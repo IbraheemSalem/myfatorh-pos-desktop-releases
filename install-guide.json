@@ -1,0 +1,440 @@
+{
+  "app": "MyFatorh POS Desktop",
+  "version": "0.2.9",
+  "download_url": "https://github.com/IbraheemSalem/myfatorh-pos-desktop-releases/releases/download/v0.2.9/MyFatorhPos-0.2.9-x64.msi",
+  "release_page": "https://github.com/IbraheemSalem/myfatorh-pos-desktop-releases/releases/tag/v0.2.9",
+  "file_name": "MyFatorhPos-0.2.9-x64.msi",
+  "size_bytes": 53444608,
+  "sha256": "1bf45c57e13348561cf12315a33e43f6e02f6520383482fd9a59b028b0239251",
+  "title": {
+    "ar": "تثبيت MyFatorh POS على جهاز Windows",
+    "en": "Installing MyFatorh POS on a Windows PC"
+  },
+  "subtitle": {
+    "ar": "الإصدار 0.2.9 · Windows 10 و 11",
+    "en": "Version 0.2.9 · Windows 10 and 11"
+  },
+  "default_language": "ar",
+  "sections": [
+    {
+      "id": "req",
+      "number": 1,
+      "title": {
+        "ar": "المتطلبات",
+        "en": "Requirements"
+      },
+      "blocks": [
+        {
+          "type": "list",
+          "ar": [
+            "جهاز يعمل بنظام Windows 10 أو Windows 11 بنسخة 64-بت.",
+            "صلاحية مسؤول (Administrator) على الجهاز مرة واحدة أثناء التثبيت.",
+            "مساحة فارغة 300 ميجابايت تقريباً.",
+            "اتصال بالإنترنت: البيع وفتح الوردية وإغلاقها تحتاج اتصالاً بالخادم.",
+            "رقم جوال وكلمة مرور لحساب MyFatorh، ونقطة بيع (جهاز POS) معرّفة للشركة على الخادم.",
+            "لا حاجة لتثبيت .NET أو أي برنامج آخر: كل ما يلزم موجود داخل المثبّت."
+          ],
+          "en": [
+            "A PC running Windows 10 or Windows 11, 64-bit.",
+            "Administrator rights on the PC, once, during installation.",
+            "About 300 MB of free disk space.",
+            "An internet connection: selling, opening and closing a shift need the server.",
+            "A MyFatorh account (mobile number and password) and a POS device set up for the company on the server.",
+            "No need to install .NET or anything else: the installer contains everything."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "get",
+      "number": 2,
+      "title": {
+        "ar": "الحصول على ملف التثبيت",
+        "en": "Get the installer"
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "ar": "ملف التثبيت اسمه MyFatorhPos-0.2.9-x64.msi (حوالي 50 ميجابايت). احصل عليه بإحدى الطريقتين:",
+          "en": "The installer is MyFatorhPos-0.2.9-x64.msi (about 50 MB). Get it one of two ways:"
+        },
+        {
+          "type": "steps",
+          "ar": [
+            "رابط مباشر (الأسهل): تنزيل MyFatorhPos-0.2.9-x64.msi\nhttps://github.com/IbraheemSalem/myfatorh-pos-desktop-releases/releases/download/v0.2.9/MyFatorhPos-0.2.9-x64.msi\nالرابط عام ولا يحتاج تسجيل دخول. صفحة الإصدار: v0.2.9",
+            "نسخ مباشر: انسخ الملف بذاكرة USB من الجهاز الذي بُني عليه، من المجلد D:\\MyFatorh System\\MyFatorhPOS\\desktop\\artifacts\\."
+          ],
+          "en": [
+            "Direct link (easiest): Download MyFatorhPos-0.2.9-x64.msi\nhttps://github.com/IbraheemSalem/myfatorh-pos-desktop-releases/releases/download/v0.2.9/MyFatorhPos-0.2.9-x64.msi\nThe link is public, no sign-in needed. Release page: v0.2.9",
+            "Direct copy: copy the file on a USB stick from the PC it was built on, folder D:\\MyFatorh System\\MyFatorhPOS\\desktop\\artifacts\\."
+          ],
+          "links": [
+            "https://github.com/IbraheemSalem/myfatorh-pos-desktop-releases/releases/download/v0.2.9/MyFatorhPos-0.2.9-x64.msi",
+            "https://github.com/IbraheemSalem/myfatorh-pos-desktop-releases/releases/tag/v0.2.9"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "install",
+      "number": 3,
+      "title": {
+        "ar": "التثبيت",
+        "en": "Install"
+      },
+      "blocks": [
+        {
+          "type": "steps",
+          "ar": [
+            "انقر نقراً مزدوجاً على MyFatorhPos-0.2.9-x64.msi.",
+            "إذا ظهرت نافذة «حمى Windows جهاز الكمبيوتر» (SmartScreen): اضغط «مزيد من المعلومات» ثم «تشغيل على أي حال». تظهر لأن الملف غير موقّع رقمياً بعد.",
+            "في نافذة الترحيب اضغط Next. اترك مجلد التثبيت كما هو (C:\\Program Files\\MyFatorh POS) واضغط Next.",
+            "في صفحة «خيارات التثبيت» اختر: «إنشاء اختصار على سطح المكتب» (مفعّل افتراضياً) و«التشغيل تلقائياً مع بدء Windows» (غير مفعّل افتراضياً). اضغط Next ثم Install.",
+            "وافق على طلب صلاحية المسؤول (UAC) بالضغط على نعم.",
+            "عند الانتهاء اترك «تشغيل البرنامج الآن» مفعّلاً ليفتح البرنامج مباشرة، واضغط Finish. ستجد «MyFatorh POS» في قائمة ابدأ، وعلى سطح المكتب إذا اخترت الاختصار."
+          ],
+          "en": [
+            "Double-click MyFatorhPos-0.2.9-x64.msi.",
+            "If \"Windows protected your PC\" (SmartScreen) appears: click More info, then Run anyway. It shows because the file is not code-signed yet.",
+            "On the welcome page click Next. Keep the install folder (C:\\Program Files\\MyFatorh POS) and click Next.",
+            "On the Install options page choose \"Create a desktop shortcut\" (on by default) and \"Start with Windows\" (off by default). Click Next, then Install.",
+            "Accept the administrator prompt (UAC) with Yes.",
+            "Leave \"Launch now\" ticked to open the app right away, and click Finish. \"MyFatorh POS\" is in the Start menu, and on the desktop if you chose the shortcut."
+          ]
+        },
+        {
+          "type": "note",
+          "tone": "info",
+          "title": {
+            "ar": "نسخة واحدة فقط",
+            "en": "One copy at a time"
+          },
+          "ar": "يعمل البرنامج مرة واحدة فقط على الجهاز. إذا كان مفتوحاً (مثلاً بدأ مع Windows) وفتحته من الاختصار، تظهر نافذته المفتوحة بدلاً من فتح نسخة ثانية.",
+          "en": "The app runs once per PC session. If it is already open (for example it started with Windows) and you open it from a shortcut, the open window comes to the front instead of a second copy."
+        },
+        {
+          "type": "heading",
+          "ar": "تثبيت صامت (لعدة أجهزة)",
+          "en": "Silent install (many tills)"
+        },
+        {
+          "type": "paragraph",
+          "ar": "من نافذة «موجّه الأوامر» بصلاحية المسؤول، في مجلد الملف:",
+          "en": "From an administrator Command Prompt, in the file's folder:"
+        },
+        {
+          "type": "code",
+          "text": "msiexec /i MyFatorhPos-0.2.9-x64.msi /qn"
+        },
+        {
+          "type": "paragraph",
+          "ar": "الافتراضي: اختصار على سطح المكتب، وبدون التشغيل مع Windows. لتغيير ذلك أضف DESKTOP_SHORTCUT=0 لإلغاء الاختصار، أو START_WITH_WINDOWS=1 ليبدأ البرنامج مع Windows:",
+          "en": "By default it adds a desktop shortcut and does not start with Windows. Add DESKTOP_SHORTCUT=0 to skip the shortcut, or START_WITH_WINDOWS=1 to start the app with Windows:"
+        },
+        {
+          "type": "code",
+          "text": "msiexec /i MyFatorhPos-0.2.9-x64.msi /qn DESKTOP_SHORTCUT=0 START_WITH_WINDOWS=1"
+        }
+      ]
+    },
+    {
+      "id": "first",
+      "number": 4,
+      "title": {
+        "ar": "أول تشغيل",
+        "en": "First run"
+      },
+      "blocks": [
+        {
+          "type": "steps",
+          "ar": [
+            "افتح «MyFatorh POS» من سطح المكتب. اللغة الافتراضية العربية، وزر English في شاشة الدخول يغيّرها فوراً.",
+            "أدخل رقم الجوال بدون 966 وبدون الصفر (مثال 5XXXXXXXX) وكلمة المرور، ثم اضغط دخول.",
+            "تفتح صفحة نقطة البيع. إذا لم تكن هناك وردية مفتوحة: اختر جهاز نقطة البيع، راجع رصيد الافتتاح، واضغط فتح الوردية.",
+            "تظهر شاشة البيع: الأصناف على جهة والسلة على الجهة الأخرى. F2 للبحث، F7 لاختيار عميل، F9 للدفع."
+          ],
+          "en": [
+            "Open \"MyFatorh POS\" from the desktop. It starts in Arabic; the English button on the login screen switches at once.",
+            "Enter the mobile number without 966 and without the leading zero (e.g. 5XXXXXXXX) and the password, then sign in.",
+            "The POS page opens. With no open shift: pick the POS device, check the opening balance and open the shift.",
+            "The till appears: products on one side, cart on the other. F2 search, F7 pick a client, F9 pay."
+          ]
+        },
+        {
+          "type": "note",
+          "tone": "info",
+          "title": {
+            "ar": "تبقى مسجّلاً",
+            "en": "You stay signed in"
+          },
+          "ar": "الجلسة محفوظة ومشفّرة لمستخدم Windows الحالي، فلا يُطلب الدخول عند كل تشغيل. كل مستخدم Windows على الجهاز له جلسته وإعداداته.",
+          "en": "The session is saved, encrypted for the current Windows user, so you are not asked to sign in at every start. Each Windows user on the PC has their own session and settings."
+        }
+      ]
+    },
+    {
+      "id": "printer",
+      "number": 5,
+      "title": {
+        "ar": "إعداد طابعة الفواتير",
+        "en": "Set up the receipt printer"
+      },
+      "blocks": [
+        {
+          "type": "steps",
+          "ar": [
+            "ثبّت تعريف الطابعة من الشركة المصنّعة أولاً (للطابعات المتصلة بـ USB)، وتأكد أنها تطبع صفحة تجريبية من Windows.",
+            "في البرنامج افتح الإعدادات ← الطابعات.",
+            "في «طابعة الفواتير (هذا الجهاز)» اختر طريقة الاتصال:"
+          ],
+          "en": [
+            "Install the printer's driver from its maker first (for USB printers) and check that Windows prints a test page.",
+            "In the app open Settings → Printers.",
+            "Under \"Receipt printer (this computer)\" choose the Connection:"
+          ]
+        },
+        {
+          "type": "table",
+          "headers": [
+            {
+              "ar": "الخيار",
+              "en": "Option"
+            },
+            {
+              "ar": "متى تستخدمه",
+              "en": "When to use it"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "ar": "طابعة حرارية USB",
+                "en": "USB thermal printer"
+              },
+              {
+                "ar": "الأنسب لطابعات الفواتير الحرارية 80 مم و 58 مم (مثل POS-80C). اختر الطابعة المثبتة من القائمة. يفتح درج النقد.",
+                "en": "Best for 80 mm and 58 mm thermal receipt printers (e.g. POS-80C). Pick the installed printer from the list. Opens the cash drawer."
+              }
+            ],
+            [
+              {
+                "ar": "طابعة شبكة (IP)",
+                "en": "Network printer (IP)"
+              },
+              {
+                "ar": "طابعة متصلة بالشبكة. أدخل عنوانها، مثال 192.168.1.50 أو 192.168.1.50:9100. لا تحتاج تعريف Windows.",
+                "en": "A printer on the network. Enter its address, e.g. 192.168.1.50 or 192.168.1.50:9100. No Windows driver needed."
+              }
+            ],
+            [
+              {
+                "ar": "طابعة Windows",
+                "en": "Windows printer"
+              },
+              {
+                "ar": "أي طابعة عادية مثبتة (مثل طابعة A4). تطبع عبر تعريف Windows.",
+                "en": "Any normal installed printer (e.g. an A4 printer). Prints through its Windows driver."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "steps",
+          "start": 4,
+          "ar": [
+            "اختر عرض الورق: 80 مم أو 58 مم أو 104 مم.",
+            "فعّل «فتح درج النقد عند طباعة فاتورة بيع» إذا كان الدرج موصولاً بالطابعة.",
+            "اضغط طباعة تجريبية وتأكد أن النص العربي واضح وأن رمز QR يُقرأ بالجوال."
+          ],
+          "en": [
+            "Choose the Paper width: 80, 58 or 104 mm.",
+            "Turn on \"Open the cash drawer when a sale receipt prints\" if the drawer is plugged into the printer.",
+            "Press Test print and check the Arabic text is clear and the QR code scans with a phone."
+          ]
+        },
+        {
+          "type": "note",
+          "tone": "warning",
+          "title": {
+            "ar": "طابعات نقطة البيع على الخادم",
+            "en": "POS printers on the server"
+          },
+          "ar": "إذا كانت لنقطة البيع طابعات شبكة معرّفة على الخادم، يطبع البرنامج عليها افتراضياً. لاستخدام طابعة هذا الجهاز اختر «تُطبع الفواتير على: طابعة هذا الجهاز».",
+          "en": "If the POS has network printers set up on the server, the app prints on them by default. To use this PC's printer, choose \"Print receipts on: This computer's printer\"."
+        }
+      ]
+    },
+    {
+      "id": "scanner",
+      "number": 6,
+      "title": {
+        "ar": "ماسح الباركود",
+        "en": "Barcode scanner"
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "ar": "أي ماسح USB يعمل كلوحة مفاتيح (وهو النوع الشائع) يعمل مباشرة بدون إعداد. صوّب على المنتج وشاشة البيع مفتوحة: يكتب الماسح الرمز في خانة البحث ويضغط Enter، فيُضاف المنتج للسلة. إذا لم يُضف، اضغط F2 ثم امسح مرة أخرى.",
+          "en": "Any USB scanner that acts as a keyboard (the common kind) works with no setup. Scan with the till open: the scanner types the code into the search box and presses Enter, and the product goes into the cart. If not, press F2 and scan again."
+        }
+      ]
+    },
+    {
+      "id": "server",
+      "number": 7,
+      "title": {
+        "ar": "عنوان الخادم",
+        "en": "Server address"
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "ar": "يتصل البرنامج افتراضياً بالخادم https://api.dev.wrid.sa. لا تغيّره إلا بطلب من الدعم الفني. طريقتان للتغيير:",
+          "en": "By default the app connects to https://api.dev.wrid.sa. Change it only when support asks you to. Two ways:"
+        },
+        {
+          "type": "list",
+          "ar": [
+            "لهذا المستخدم: الإعدادات ← عنوان الخادم ← حفظ. يُسجَّل خروجك بعد التغيير.",
+            "لكل مستخدمي الجهاز: افتح المفكرة كمسؤول، وعدّل الملف C:\\Program Files\\MyFatorh POS\\appsettings.json. التحديثات اللاحقة تحافظ على هذا التعديل."
+          ],
+          "en": [
+            "For this user: Settings → Server address → Save. You are signed out after the change.",
+            "For every user of the PC: open Notepad as administrator and edit C:\\Program Files\\MyFatorh POS\\appsettings.json. Later updates keep the edit."
+          ]
+        },
+        {
+          "type": "code",
+          "text": "{\n  \"ApiUrl\": \"https://api.dev.wrid.sa\"\n}"
+        },
+        {
+          "type": "note",
+          "tone": "danger",
+          "title": {
+            "ar": "تنبيه",
+            "en": "Caution"
+          },
+          "ar": "الخادم api.dev.wrid.sa يعمل على قاعدة البيانات الحقيقية. كل بيع أو وردية أو ترتيب منتجات تجريبي يُسجَّل فعلاً لدى الشركة. جرّب بحساب شركة تجريبية.",
+          "en": "api.dev.wrid.sa runs on the real database. Every test sale, shift or product order is recorded for the company. Test with a test company account."
+        }
+      ]
+    },
+    {
+      "id": "update",
+      "number": 8,
+      "title": {
+        "ar": "التحديث والإزالة",
+        "en": "Update and remove"
+      },
+      "blocks": [
+        {
+          "type": "list",
+          "ar": [
+            "التحديث: شغّل ملف MSI للإصدار الأحدث بنفس الطريقة. يحلّ محل القديم مباشرة وتبقى الجلسة والإعدادات والطابعات كما هي، وتظهر خيارات التثبيت كما اخترتها في المرة السابقة. لا داعي لإزالة القديم أولاً.",
+            "الإزالة: الإعدادات ← التطبيقات ← «MyFatorh POS» ← إلغاء التثبيت.",
+            "بيانات المستخدم (الجلسة، الإعدادات، الطابعات، البيانات المحفوظة، السجلات) في %LOCALAPPDATA%\\MyFatorhPos، ولا تُحذف عند الإزالة. احذف المجلد يدوياً لإزالتها بالكامل."
+          ],
+          "en": [
+            "Update: run the newer version's MSI the same way. It replaces the old one in place; the session, settings and printers are kept, and the install options show your previous choices. No need to uninstall first.",
+            "Remove: Settings → Apps → \"MyFatorh POS\" → Uninstall.",
+            "User data (session, settings, printers, saved data, logs) is in %LOCALAPPDATA%\\MyFatorhPos and is not deleted on uninstall. Delete that folder by hand to remove it completely."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trouble",
+      "number": 9,
+      "title": {
+        "ar": "حل المشكلات",
+        "en": "Troubleshooting"
+      },
+      "blocks": [
+        {
+          "type": "table",
+          "headers": [
+            {
+              "ar": "المشكلة",
+              "en": "Problem"
+            },
+            {
+              "ar": "الحل",
+              "en": "What to do"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "ar": "Windows يمنع تشغيل المثبّت",
+                "en": "Windows blocks the installer"
+              },
+              {
+                "ar": "«مزيد من المعلومات» ← «تشغيل على أي حال». إذا لم يظهر الزر: انقر الملف بالزر الأيمن ← خصائص ← فعّل «إلغاء الحظر» ← موافق.",
+                "en": "\"More info\" → \"Run anyway\". If there's no such button: right-click the file → Properties → tick \"Unblock\" → OK."
+              }
+            ],
+            [
+              {
+                "ar": "«غير متصل» في أعلى الشاشة",
+                "en": "\"Offline\" at the top of the screen"
+              },
+              {
+                "ar": "تحقق من الإنترنت ومن عنوان الخادم في الإعدادات. اضغط على مؤشر الاتصال لرؤية التفاصيل وزر التحديث.",
+                "en": "Check the internet and the server address in Settings. Click the connection chip for details and the refresh button."
+              }
+            ],
+            [
+              {
+                "ar": "لا تظهر نقاط البيع عند فتح الوردية",
+                "en": "No POS devices when opening a shift"
+              },
+              {
+                "ar": "يجب تعريف جهاز نقطة بيع للشركة على الخادم (من الويب)، ويجب أن يكون للحساب صلاحية عليه.",
+                "en": "A POS device must be set up for the company on the server (from the web), and the account must have access to it."
+              }
+            ],
+            [
+              {
+                "ar": "الطابعة غير موجودة",
+                "en": "Printer not found"
+              },
+              {
+                "ar": "ثبّت تعريفها، ثم في الإعدادات ← الطابعات اضغط «تحديث قائمة الطابعات» واخترها من جديد.",
+                "en": "Install its driver, then in Settings → Printers press \"Refresh printer list\" and pick it again."
+              }
+            ],
+            [
+              {
+                "ar": "الفاتورة الطويلة تنقسم أو تُقص",
+                "en": "A long receipt is split or cut"
+              },
+              {
+                "ar": "استخدم «طابعة حرارية USB» بدلاً من «طابعة Windows»؛ كثير من تعريفات 80 مم تتجاهل طول الصفحة.",
+                "en": "Use \"USB thermal printer\" instead of \"Windows printer\"; many 80 mm drivers ignore the page length."
+              }
+            ],
+            [
+              {
+                "ar": "الأرقام أو التاريخ بشكل غريب",
+                "en": "Odd digits or dates"
+              },
+              {
+                "ar": "البرنامج يستخدم دائماً التاريخ الميلادي والأرقام 0-9 مهما كانت إعدادات Windows الإقليمية. هذا مقصود ليطابق الفواتير والويب.",
+                "en": "The app always uses Gregorian dates and 0-9 digits, whatever Windows' regional settings. This is deliberate, to match invoices and the web."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "ar": "إذا احتجت الدعم الفني، أرسل الملف %LOCALAPPDATA%\\MyFatorhPos\\errors.log إن وُجد. للوصول إليه: اضغط Win + R واكتب %LOCALAPPDATA%\\MyFatorhPos.",
+          "en": "If you contact support, send %LOCALAPPDATA%\\MyFatorhPos\\errors.log if it exists. To open the folder: press Win + R and type %LOCALAPPDATA%\\MyFatorhPos."
+        }
+      ]
+    }
+  ],
+  "footer": {
+    "ar": "MyFatorh POS · نسخة سطح المكتب 0.2.9",
+    "en": "MyFatorh POS · Desktop 0.2.9"
+  }
+}
